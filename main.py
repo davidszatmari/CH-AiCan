@@ -35,9 +35,10 @@ while True:
     # Prompt the user to start or not
     print("--------------------------------")
     print("[1] Program elkezdese")
-    print("[2] CSV konvertel")
-    print("[3] AiCAN elinditása")
-    print("[4] Program ujrainditasa")
+    print("[2] Fajlok csak masolasa")
+    print("[3] CSV konvertel")
+    print("[4] AiCAN elinditása")
+    print("[5] Program ujrainditasa")
     print("[0] Program leallitasa")
     print("--------------------------------")
     
@@ -95,8 +96,47 @@ while True:
         print("Process not started.")
         time.sleep(1)
         break
+    
+    if user_input == '2': 
+        # Initialize a counter for successfully transferred files
         
-    elif user_input == '2':
+        if count == 0:
+            print("Nincsen falj megaddva")
+            time.sleep(1)
+            os.system('cls')
+            
+        elif not os.path.exists(output_directory):
+            print(f"{output_directory} Folder does not exists")
+            time.sleep(2)
+            os.system('cls')
+
+        # If there are directories with 'input.json', copy and wait for 'result.json'
+        elif count > 0:
+            for dirpath, dirnames, filenames in os.walk(root_directory):
+                if input_file in filenames:
+                    input_file_path = os.path.join(dirpath, input_file)
+                    output_file_path = os.path.join(output_directory, input_file)
+
+                    # Copy 'input.json' to the output folder
+                    shutil.copy(input_file_path, output_file_path)
+                    transferred_count += 1
+                    print(f"{transferred_count}/{count} 'input.json' transferred")
+
+                    while True:
+                        # Check if 'result.json' exists in the output folder
+                        result_file_path = os.path.join(output_directory, result_file)
+                        if os.path.exists(result_file_path):
+                            # Move 'result.json' back to the input folder
+                            shutil.move(result_file_path, os.path.join(dirpath, result_file))
+                            print(f"{transferred_count}/{count} 'input.json' files have corresponding 'result.json' files.")
+                            break
+                        else:
+                            print("Waiting for 'result.json'...")
+                            time.sleep(1)  # Wait for 1 second before checking again
+            print("'input.json' files trasfer end")
+            break
+
+    elif user_input == '3':
         if count == 0:
             print("Nincsen falj megaddva")
             time.sleep(1)
@@ -107,7 +147,8 @@ while True:
             input(" ")
             break
 
-    elif user_input == '3':
+
+    elif user_input == '4':
         file_path = 'C:/Users/David/AppData/Roaming/Spotify/Spotifye.exe'
         if os.path.exists(file_path):
             os.startfile(file_path)
@@ -120,7 +161,7 @@ while True:
             os.system('cls')
             
             
-    elif user_input == '4':
+    elif user_input == '5':
         print("Restarting the process.")
         os.system('cls')
     
