@@ -50,8 +50,7 @@ while True:
         if count == 0:
             print("Nincsen falj megaddva")
             time.sleep(1)
-            clear = lambda: os.system('cls')
-            clear()
+            os.system('cls')
             
         # If there are directories with 'input.json', copy and wait for 'result.json'
         elif count > 0:
@@ -77,13 +76,12 @@ while True:
                             print("Waiting for 'result.json'...")
                             time.sleep(1)  # Wait for 1 second before checking again
 
-            
-            print("All 'input.json' files have corresponding 'result.json' files.")
+            print("'input.json' files trasfer end")
             print("###############################")
             input_directory = r"property_json1" #coverts.py call
             print("Files coverting...")
             convert_json_to_csv(input_directory)
-            print("All input.json + result.json combined to output.csv")
+            print(f"{transferred_count}/{count} 'input.json' files have a 'result.json'")
             print("###############################")
             input(" ")
             break
@@ -97,8 +95,7 @@ while True:
         if count == 0:
             print("Nincsen falj megaddva")
             time.sleep(1)
-            clear = lambda: os.system('cls')
-            clear()
+            os.system('cls')
         else:
             input_directory = r"property_json1"
             convert_json_to_csv(input_directory)
@@ -106,16 +103,20 @@ while True:
             break
 
     elif user_input == '3':
-        os.startfile('C:/Users/David/AppData/Roaming/Spotify/Spotify.exe')
-        print("Alkalmazas megnyitása...")
-        time.sleep(3)
-        clear = lambda: os.system('cls')
-        clear()
-    
+        file_path = 'C:/Users/David/AppData/Roaming/Spotify/Spotify.exe'
+        if os.path.exists(file_path):
+            os.startfile(file_path)
+            print("Alkalmazas megnyitása...")
+            time.sleep(3)
+            os.system('cls')
+        else:
+            print(f"{file_path} File does not exists")
+            time.sleep(3)
+            os.system('cls')
+            
     elif user_input == '4':
         print("Restarting the process.")
-        clear = lambda: os.system('cls')
-        clear()
+        os.system('cls')
     
     else:
         print("Invalid input. Process not started.")
