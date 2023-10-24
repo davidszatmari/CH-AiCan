@@ -52,6 +52,11 @@ while True:
             time.sleep(1)
             os.system('cls')
             
+        elif not os.path.exists(output_directory):
+            print(f"{output_directory} Folder does not exists")
+            time.sleep(2)
+            os.system('cls')
+
         # If there are directories with 'input.json', copy and wait for 'result.json'
         elif count > 0:
             for dirpath, dirnames, filenames in os.walk(root_directory):
@@ -103,7 +108,7 @@ while True:
             break
 
     elif user_input == '3':
-        file_path = 'C:/Users/David/AppData/Roaming/Spotify/Spotify.exe'
+        file_path = 'C:/Users/David/AppData/Roaming/Spotify/Spotifye.exe'
         if os.path.exists(file_path):
             os.startfile(file_path)
             print("Alkalmazas megnyitása...")
@@ -113,6 +118,7 @@ while True:
             print(f"{file_path} File does not exists")
             time.sleep(3)
             os.system('cls')
+            
             
     elif user_input == '4':
         print("Restarting the process.")
