@@ -35,7 +35,7 @@ def convert_json_to_csv(input_directory):
                         csv_writer.writerow([field, data1[field].get(''), '', field, data2[field].get('')])
                         
 
-                print(f"CSV fálj '{output_filename}' létre lett hozva.")
+                print(f"CSV fájl '{output_filename}' létre lett hozva.")
                 if cov == lis:
                     print(f"{cov}/{lis} konvertálva.")
                 else:

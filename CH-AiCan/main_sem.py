@@ -51,7 +51,7 @@ while True:
         # Initialize a counter for successfully transferred files
         
         if count == 0:
-            print("Nincsen fálj megadva.")
+            print("Nincsen fájl megadva.")
             time.sleep(1)
             os.system('cls')
             
