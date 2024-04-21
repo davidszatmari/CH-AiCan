@@ -1,4 +1,4 @@
-# AiCAN
+# CH-AiCAN
 
 ## Overview
 The program is designed to automate the submission of predefined property descriptions to the AiCAN (run.exe) system. When a property description is submitted to AiCAN, the system generates a "result.json" file as a response.
